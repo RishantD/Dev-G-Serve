@@ -29,7 +29,12 @@ module.exports = {
 	          "name": body.fname,
 	          "type": "to"
 	        }],
-					"global_merge_vars": []
+			"global_merge_vars": [
+				{
+		            "name": "fname",
+		            "content": body.name
+		        }
+			]
 	    };
 	    mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message}, function(result) {
 	      return res.status(200).send({message: "New subscriber created"});
