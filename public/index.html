@@ -340,7 +340,7 @@
           lname=$("#last").val();
           email=$("#email").val();
           role=$("#occu").val();
-          $.post("https://gooroo-dev.appspot.com/api/subscriber/new",{fname: fname,lname: lname, email: email,role: role}, function(data){
+          $.post("https://gooroo-dev.herokuapp.com/api/subscriber/new",{fname: fname,lname: lname, email: email,role: role}, function(data){
             if(data==='done')
               {
                 alert("login success");
