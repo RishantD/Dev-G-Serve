@@ -340,7 +340,7 @@
           lname=$("#last").val();
           email=$("#email").val();
           role=$("#occu").val();
-          $.post("http://127.0.0.1:5000/api/subscriber/new",{fname: fname,lname: lname, email: email,role: role}, function(data){
+          $.post("https://gooroo-dev.appspot.com/api/subscriber/new",{fname: fname,lname: lname, email: email,role: role}, function(data){
             if(data==='done')
               {
                 alert("login success");
