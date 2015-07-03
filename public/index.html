@@ -317,7 +317,15 @@
                         <h2 class="text-uppercase wow fadeInLeft" data-wow-offset="-100" data-wow-duration="1.5s">We're Sorry</h2>
                     </div>
                     <div class="row">
-                        <p class="wow fadeInRight" data-wow-offset="-100" data-wow-duration="1.5s">There was an error signing you up</p>
+                        <p class="wow fadeInRight" data-wow-offset="-100" data-wow-duration="1.5s">We were unable to sign you up</p>
+                    </div>
+                </span>
+                <span id="errorSigningDup">
+                    <div class="row">
+                        <h2 class="text-uppercase wow fadeInLeft" data-wow-offset="-100" data-wow-duration="1.5s">We're Sorry</h2>
+                    </div>
+                    <div class="row">
+                        <p class="wow fadeInRight" data-wow-offset="-100" data-wow-duration="1.5s">That email is already registered with us</p>
                     </div>
                 </span>
             </div>
@@ -365,6 +373,7 @@
         $('#signing').hide();
         $('#signedup').hide();
         $('#errorSigning').hide();
+        $('#errorSigningDup').hide();
         var fname, lname, email, role;
         $("#submit").click(function(){
           $('#unsigned').hide();
@@ -384,13 +393,21 @@
                         scrollTop: $("#signup").offset().top
                     }, 1000);
                 }
-                else {
-                    $('#signing').hide();
-                    $('#errorSigning').show();
-                    $('html, body').animate({
-                        scrollTop: $("#signup").top
-                    }, 1000);
-                }
+          }).fail(function(data){
+            if(data['responseJSON']['message'] === "Duplicate Key") {
+                $('#signing').hide();
+                $('#errorSigningDup').show();
+                $('html, body').animate({
+                    scrollTop: $("#signup").top
+                }, 1000);
+            }
+            else {
+                $('#signing').hide();
+                $('#errorSigning').show();
+                $('html, body').animate({
+                    scrollTop: $("#signup").top
+                }, 1000);
+            }
           });
         });
       });

@@ -17,7 +17,12 @@ module.exports = {
 		subscriber.save(function(err, newSubscriber){
 			if (err){
 				console.log(err);
-				return res.status(400).send({message: "Unknown Error"});
+				if (err['code'] === 11000) {
+					return res.status(400).send({message: "Duplicate Key"});
+				}
+				else {
+					return res.status(400).send({message: "Unknown error"});
+				}
 			}
 			var template_name = "Welcome";
 	    var template_content = [];
