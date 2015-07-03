@@ -31,8 +31,8 @@ module.exports = {
 	        }],
 			"global_merge_vars": [
 				{
-		            "name": "fname",
-		            "content": body.name
+		            "name": "FNAME",
+		            "content": body.fname
 		        }
 			]
 	    };
